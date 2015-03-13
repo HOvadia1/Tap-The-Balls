@@ -597,6 +597,7 @@ GameObject:
   - 4: {fileID: 1565879351}
   - 114: {fileID: 1565879350}
   - 114: {fileID: 1565879352}
+  - 82: {fileID: 1565879353}
   m_Layer: 0
   m_Name: _GM
   m_TagString: Untagged
@@ -615,6 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98b27873f85c234a9d77773075f3d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio: {fileID: 8300000, guid: 5f7874c7e9319c342bb0831f500644d8, type: 3}
   ball: {fileID: 151826, guid: 3b97be0fa98138f4892e2ea96fccaa9d, type: 2}
   timer: {fileID: 2001129703}
   ballsLeft: {fileID: 341463914}
@@ -659,6 +661,75 @@ MonoBehaviour:
   allowDrag: 1
   frequency: .5
   nbDecimal: 1
+--- !u!82 &1565879353
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1565879349}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &1568460510
 Prefab:
   m_ObjectHideFlags: 0

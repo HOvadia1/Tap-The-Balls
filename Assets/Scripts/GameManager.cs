@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    public AudioClip audio;
     public GameObject ball;
 
     public Text timer;
@@ -89,6 +90,11 @@ public class GameManager : MonoBehaviour
             {
                 if(hit.collider.tag == "ball")
                 {
+                    if(gameObject.GetComponent<AudioSource>() != null)
+                    {
+                        gameObject.GetComponent<AudioSource>().clip = audio;
+                        gameObject.GetComponent<AudioSource>().Play();
+                    }
                     Destroy(hit.collider.gameObject);
                     currentBalls--;
                     points += 1;
@@ -106,6 +112,12 @@ public class GameManager : MonoBehaviour
                 {
                     if(hit.collider.tag == "ball")
                     {
+                        if (gameObject.GetComponent<AudioSource>() != null)
+                        {
+                            gameObject.GetComponent<AudioSource>().clip = audio;
+                            gameObject.GetComponent<AudioSource>().Play();
+                        }
+
                         Destroy(hit.collider.gameObject);
                         currentBalls--;
                         points += 1;
