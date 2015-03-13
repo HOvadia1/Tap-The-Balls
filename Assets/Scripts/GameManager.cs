@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        Input.multiTouchEnabled = false;
         bPL = level * ballModifier;
 
         Mathf.Clamp(time, 0, 1000000);
@@ -117,6 +118,6 @@ public class GameManager : MonoBehaviour
         {
             Application.LoadLevel("Loser");
         }
-        ballsLeft.text = "Balls Left: " + currentBalls;
+        ballsLeft.text = "Circles Left: " + currentBalls;
     }
 }
