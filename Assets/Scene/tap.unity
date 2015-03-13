@@ -509,8 +509,8 @@ MonoBehaviour:
   curLevel: {fileID: 1977261936}
   time: 0
   level: 0
-  ballModifier: 2
-  timeModifier: 1.10000002
+  ballModifier: 3
+  timeModifier: .899999976
   bPL: 0
 --- !u!4 &1565879351
 Transform:
