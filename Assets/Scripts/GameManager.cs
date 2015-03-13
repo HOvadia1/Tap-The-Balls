@@ -6,8 +6,11 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject ball;
+
     public Text timer;
     public Text ballsLeft;
+    public Text curLevel;
+
     public float time;
 
     [HideInInspector]
@@ -37,7 +40,7 @@ public class GameManager : MonoBehaviour
             b.GetComponent<SpriteRenderer>().color = new Color(Random.value, Random.value, Random.value);
         }
         time = bPL * timeModifier;
-
+        curLevel.text = "Level: " + level;
         currentBalls = bPL;
     }
 
@@ -57,11 +60,19 @@ public class GameManager : MonoBehaviour
     {
         bPL = level * ballModifier;
 
-        time -= Time.deltaTime;
+        Mathf.Clamp(time, 0, 1000000);
 
         float seconds = time % 60;
-        if (time > 0)
+        if (time >= 0)
+        {
+            time -= Time.deltaTime;
             timer.text = string.Format("{0:00}", seconds);
+        }
+        else
+        {
+            time = 0;
+        }
+
 
         //Mouse Logic
         if (Input.GetMouseButtonDown(0))
@@ -102,6 +113,10 @@ public class GameManager : MonoBehaviour
                 NewLevel();
             }
 
+        if(currentBalls > 0 && time == 0)
+        {
+            Application.LoadLevel("Loser");
+        }
         ballsLeft.text = "Balls Left: " + currentBalls;
     }
 }
