@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         level = 1;
         bPL = level * ballModifier;
-        time = bPL * timeModifier;
+        //time = 
     }
 
     public void DrawBalls()
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
             b.name = "ball " + i;
             b.GetComponent<SpriteRenderer>().color = new Color(Random.value, Random.value, Random.value);
         }
-        time = bPL * timeModifier;
+       // time = bPL / level * 2f;
         curLevel.text = "Level: " + level;
         currentBalls = bPL;
     }
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Input.multiTouchEnabled = false;
+        Input.multiTouchEnabled = true;
         bPL = level * ballModifier;
 
         Mathf.Clamp(time, 0, 1000000);
