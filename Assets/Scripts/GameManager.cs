@@ -79,10 +79,28 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(currentBalls == 0)
+        //Touch phone logic
+        for (int i = 0; i < Input.touchCount; ++i)
         {
-            NewLevel();
+            if(Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.zero);
+                if(hit.collider)
+                {
+                    if(hit.collider.tag == "ball")
+                    {
+                        Destroy(hit.collider.gameObject);
+                        currentBalls--;
+                    }
+                }
+            }
         }
+
+
+            if (currentBalls == 0)
+            {
+                NewLevel();
+            }
 
         ballsLeft.text = "Balls Left: " + currentBalls;
     }
