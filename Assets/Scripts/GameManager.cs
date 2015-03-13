@@ -36,9 +36,12 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < bPL; i++)
         {
-            GameObject b = (GameObject)Instantiate(ball, new Vector3(Random.Range(-3.5f, 3.5f), Random.Range(-1.7f, 2.77f), 0.0f), Quaternion.identity);
+            //GameObject b = (GameObject)Instantiate(ball, new Vector3(Random.Range(-3.5f, 3.5f), Random.Range(-1.7f, 2.77f), 0.0f), Quaternion.identity);
+            GameObject b = (GameObject)Instantiate(ball, new Vector3(0, 0, 0), Quaternion.identity);
+
             b.name = "ball " + i;
             b.GetComponent<SpriteRenderer>().color = new Color(Random.value, Random.value, Random.value);
+            b.GetComponent<Rigidbody2D>().velocity = Random.insideUnitCircle * 5;
         }
         time = bPL * level;
         curLevel.text = "Level: " + level;
