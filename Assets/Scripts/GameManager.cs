@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
             b.GetComponent<SpriteRenderer>().color = new Color(Random.value, Random.value, Random.value);
             b.GetComponent<Rigidbody2D>().velocity = Random.insideUnitCircle * 5;
         }
+
         time = bPL * level;
         curLevel.text = "Level: " + level;
         currentBalls = bPL;
@@ -66,13 +67,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Input.multiTouchEnabled = true;
-        bPL = level * ballModifier;
-
-        Mathf.Clamp(time, 0, 1000000);
-
-        float seconds = time % 60;
-        if (time >= 0)
+        int seconds = (int)(time);
+        if (time > 0)
         {
             time -= Time.deltaTime;
             timer.text = string.Format("{0:00}", seconds);
@@ -124,7 +120,7 @@ public class GameManager : MonoBehaviour
                 NewLevel();
             }
 
-        if(currentBalls > 0 && time == 0)
+        if(currentBalls > 0 && time <= 0)
         {
             PlayerPrefs.SetInt("recentscore", points);
             Debug.Log(PlayerPrefs.GetInt("recentscore"));
