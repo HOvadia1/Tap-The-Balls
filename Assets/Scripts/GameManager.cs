@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Text timer;
     public Text ballsLeft;
     public Text curLevel;
-
+    public Text pText;
     public float time;
 
     [HideInInspector]
@@ -23,12 +23,13 @@ public class GameManager : MonoBehaviour
     public int bPL;
 
     int currentBalls;
+    public int points;
 
     void Awake()
     {
         level = 1;
         bPL = level * ballModifier;
-        //time = 
+        time = bPL * level;
     }
 
     public void DrawBalls()
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
             b.name = "ball " + i;
             b.GetComponent<SpriteRenderer>().color = new Color(Random.value, Random.value, Random.value);
         }
-       // time = bPL / level * 2f;
+        time = bPL * level;
         curLevel.text = "Level: " + level;
         currentBalls = bPL;
     }
@@ -54,6 +55,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DrawBalls();
+        if(PlayerPrefs.GetInt("highscore") == null)
+        {
+            PlayerPrefs.SetInt("highscore", 0);
+        }
     }
 
     void Update()
@@ -87,6 +92,7 @@ public class GameManager : MonoBehaviour
                 {
                     Destroy(hit.collider.gameObject);
                     currentBalls--;
+                    points += 1;
                 }
             }
         }
@@ -103,6 +109,7 @@ public class GameManager : MonoBehaviour
                     {
                         Destroy(hit.collider.gameObject);
                         currentBalls--;
+                        points += 1;
                     }
                 }
             }
@@ -116,8 +123,19 @@ public class GameManager : MonoBehaviour
 
         if(currentBalls > 0 && time == 0)
         {
+            PlayerPrefs.SetInt("recentscore", points);
+            Debug.Log(PlayerPrefs.GetInt("recentscore"));
+
+            if(PlayerPrefs.GetInt("recentscore") > PlayerPrefs.GetInt("highscore"))
+            {
+                PlayerPrefs.SetInt("highscore", points);
+                Debug.Log("beat high score!");
+            }
+
             Application.LoadLevel("Loser");
         }
+
         ballsLeft.text = "Circles Left: " + currentBalls;
+        pText.text = "Points: " + points;
     }
 }
